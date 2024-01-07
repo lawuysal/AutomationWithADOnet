@@ -30,6 +30,18 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             sideBar = new Panel();
+            menu_yeniHasta_panel = new Panel();
+            label23 = new Label();
+            menu_personelSorgu_panel = new Panel();
+            label22 = new Label();
+            panel4 = new Panel();
+            menu_poliklinikSorgu_panel = new Label();
+            menu_doktorSorgu_panel = new Panel();
+            label20 = new Label();
+            menu_hastaArama_panel = new Panel();
+            label19 = new Label();
+            menu_anaEkran_panel = new Panel();
+            label18 = new Label();
             hastaKayitEkran = new Panel();
             kayit_sil_button = new Button();
             groupBox2 = new GroupBox();
@@ -87,6 +99,28 @@
             button5 = new Button();
             label7 = new Label();
             button4 = new Button();
+            yeniHastaKayıtEkran = new Panel();
+            hastaKayit_kaydet_button = new Button();
+            label30 = new Label();
+            hastaKayit_adres_box = new TextBox();
+            label29 = new Label();
+            label28 = new Label();
+            hastaKayit_dogum_tarih = new DateTimePicker();
+            label27 = new Label();
+            hastaKayit_cinsiyet_box = new ComboBox();
+            hastaKayit_soyad_box = new TextBox();
+            label26 = new Label();
+            hastaKayit_ad_box = new TextBox();
+            label25 = new Label();
+            hastaKayit_tc_box = new TextBox();
+            label24 = new Label();
+            sideBar.SuspendLayout();
+            menu_yeniHasta_panel.SuspendLayout();
+            menu_personelSorgu_panel.SuspendLayout();
+            panel4.SuspendLayout();
+            menu_doktorSorgu_panel.SuspendLayout();
+            menu_hastaArama_panel.SuspendLayout();
+            menu_anaEkran_panel.SuspendLayout();
             hastaKayitEkran.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -96,15 +130,139 @@
             hasta_arama_ekran.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hasta_arama_gridV).BeginInit();
+            yeniHastaKayıtEkran.SuspendLayout();
             SuspendLayout();
             // 
             // sideBar
             // 
-            sideBar.BackColor = Color.LightSkyBlue;
+            sideBar.BackColor = Color.MediumSeaGreen;
+            sideBar.Controls.Add(menu_yeniHasta_panel);
+            sideBar.Controls.Add(menu_personelSorgu_panel);
+            sideBar.Controls.Add(panel4);
+            sideBar.Controls.Add(menu_doktorSorgu_panel);
+            sideBar.Controls.Add(menu_hastaArama_panel);
+            sideBar.Controls.Add(menu_anaEkran_panel);
             sideBar.Location = new Point(1, 123);
             sideBar.Name = "sideBar";
-            sideBar.Size = new Size(250, 428);
+            sideBar.Size = new Size(250, 395);
             sideBar.TabIndex = 0;
+            // 
+            // menu_yeniHasta_panel
+            // 
+            menu_yeniHasta_panel.BackColor = Color.SeaGreen;
+            menu_yeniHasta_panel.Controls.Add(label23);
+            menu_yeniHasta_panel.Location = new Point(29, 151);
+            menu_yeniHasta_panel.Name = "menu_yeniHasta_panel";
+            menu_yeniHasta_panel.Size = new Size(189, 36);
+            menu_yeniHasta_panel.TabIndex = 5;
+            menu_yeniHasta_panel.Click += panel6_Click;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.ForeColor = Color.White;
+            label23.Location = new Point(35, 8);
+            label23.Name = "label23";
+            label23.Size = new Size(119, 20);
+            label23.TabIndex = 0;
+            label23.Text = "Yeni Hasta Kaydı";
+            // 
+            // menu_personelSorgu_panel
+            // 
+            menu_personelSorgu_panel.BackColor = Color.SeaGreen;
+            menu_personelSorgu_panel.Controls.Add(label22);
+            menu_personelSorgu_panel.Location = new Point(29, 304);
+            menu_personelSorgu_panel.Name = "menu_personelSorgu_panel";
+            menu_personelSorgu_panel.Size = new Size(189, 36);
+            menu_personelSorgu_panel.TabIndex = 4;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.ForeColor = Color.White;
+            label22.Location = new Point(40, 8);
+            label22.Name = "label22";
+            label22.Size = new Size(107, 20);
+            label22.TabIndex = 0;
+            label22.Text = "Personel Sorgu";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.SeaGreen;
+            panel4.Controls.Add(menu_poliklinikSorgu_panel);
+            panel4.Location = new Point(29, 254);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(189, 36);
+            panel4.TabIndex = 3;
+            // 
+            // menu_poliklinikSorgu_panel
+            // 
+            menu_poliklinikSorgu_panel.AutoSize = true;
+            menu_poliklinikSorgu_panel.ForeColor = Color.White;
+            menu_poliklinikSorgu_panel.Location = new Point(40, 8);
+            menu_poliklinikSorgu_panel.Name = "menu_poliklinikSorgu_panel";
+            menu_poliklinikSorgu_panel.Size = new Size(110, 20);
+            menu_poliklinikSorgu_panel.TabIndex = 0;
+            menu_poliklinikSorgu_panel.Text = "Poliklinik Sorgu";
+            // 
+            // menu_doktorSorgu_panel
+            // 
+            menu_doktorSorgu_panel.BackColor = Color.SeaGreen;
+            menu_doktorSorgu_panel.Controls.Add(label20);
+            menu_doktorSorgu_panel.Location = new Point(29, 203);
+            menu_doktorSorgu_panel.Name = "menu_doktorSorgu_panel";
+            menu_doktorSorgu_panel.Size = new Size(189, 36);
+            menu_doktorSorgu_panel.TabIndex = 2;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.ForeColor = Color.White;
+            label20.Location = new Point(44, 8);
+            label20.Name = "label20";
+            label20.Size = new Size(98, 20);
+            label20.TabIndex = 0;
+            label20.Text = "Doktor Sorgu";
+            // 
+            // menu_hastaArama_panel
+            // 
+            menu_hastaArama_panel.BackColor = Color.SeaGreen;
+            menu_hastaArama_panel.Controls.Add(label19);
+            menu_hastaArama_panel.Location = new Point(29, 98);
+            menu_hastaArama_panel.Name = "menu_hastaArama_panel";
+            menu_hastaArama_panel.Size = new Size(189, 36);
+            menu_hastaArama_panel.TabIndex = 1;
+            menu_hastaArama_panel.Click += menu_hastaArama_panel_Click;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.ForeColor = Color.White;
+            label19.Location = new Point(47, 7);
+            label19.Name = "label19";
+            label19.Size = new Size(95, 20);
+            label19.TabIndex = 0;
+            label19.Text = "Hasta Arama";
+            // 
+            // menu_anaEkran_panel
+            // 
+            menu_anaEkran_panel.BackColor = Color.SeaGreen;
+            menu_anaEkran_panel.Controls.Add(label18);
+            menu_anaEkran_panel.Location = new Point(29, 45);
+            menu_anaEkran_panel.Name = "menu_anaEkran_panel";
+            menu_anaEkran_panel.Size = new Size(189, 36);
+            menu_anaEkran_panel.TabIndex = 0;
+            menu_anaEkran_panel.Click += menu_anaEkran_panel_Click;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.ForeColor = Color.White;
+            label18.Location = new Point(56, 8);
+            label18.Name = "label18";
+            label18.Size = new Size(75, 20);
+            label18.TabIndex = 0;
+            label18.Text = "Ana Ekran";
             // 
             // hastaKayitEkran
             // 
@@ -669,7 +827,7 @@
             hasta_arama_gridV.AllowUserToDeleteRows = false;
             hasta_arama_gridV.AllowUserToOrderColumns = true;
             hasta_arama_gridV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            hasta_arama_gridV.Location = new Point(296, 281);
+            hasta_arama_gridV.Location = new Point(313, 281);
             hasta_arama_gridV.Name = "hasta_arama_gridV";
             hasta_arama_gridV.ReadOnly = true;
             hasta_arama_gridV.RowHeadersWidth = 51;
@@ -713,16 +871,185 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // yeniHastaKayıtEkran
+            // 
+            yeniHastaKayıtEkran.BackColor = Color.Wheat;
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_kaydet_button);
+            yeniHastaKayıtEkran.Controls.Add(label30);
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_adres_box);
+            yeniHastaKayıtEkran.Controls.Add(label29);
+            yeniHastaKayıtEkran.Controls.Add(label28);
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_dogum_tarih);
+            yeniHastaKayıtEkran.Controls.Add(label27);
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_cinsiyet_box);
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_soyad_box);
+            yeniHastaKayıtEkran.Controls.Add(label26);
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_ad_box);
+            yeniHastaKayıtEkran.Controls.Add(label25);
+            yeniHastaKayıtEkran.Controls.Add(hastaKayit_tc_box);
+            yeniHastaKayıtEkran.Controls.Add(label24);
+            yeniHastaKayıtEkran.Location = new Point(257, 11);
+            yeniHastaKayıtEkran.Name = "yeniHastaKayıtEkran";
+            yeniHastaKayıtEkran.Size = new Size(1237, 706);
+            yeniHastaKayıtEkran.TabIndex = 4;
+            // 
+            // hastaKayit_kaydet_button
+            // 
+            hastaKayit_kaydet_button.Enabled = false;
+            hastaKayit_kaydet_button.Location = new Point(539, 557);
+            hastaKayit_kaydet_button.Name = "hastaKayit_kaydet_button";
+            hastaKayit_kaydet_button.Size = new Size(179, 42);
+            hastaKayit_kaydet_button.TabIndex = 13;
+            hastaKayit_kaydet_button.Text = "Hastayı Ekle";
+            hastaKayit_kaydet_button.UseVisualStyleBackColor = true;
+            hastaKayit_kaydet_button.Click += hastaKayit_kaydet_button_Click;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label30.ForeColor = Color.Black;
+            label30.Location = new Point(496, 74);
+            label30.Name = "label30";
+            label30.Size = new Size(260, 41);
+            label30.TabIndex = 12;
+            label30.Text = "YENİ HASTA KAYIT";
+            // 
+            // hastaKayit_adres_box
+            // 
+            hastaKayit_adres_box.Location = new Point(651, 282);
+            hastaKayit_adres_box.Multiline = true;
+            hastaKayit_adres_box.Name = "hastaKayit_adres_box";
+            hastaKayit_adres_box.Size = new Size(249, 185);
+            hastaKayit_adres_box.TabIndex = 11;
+            hastaKayit_adres_box.TextChanged += hastaKayit_adres_box_TextChanged;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.ForeColor = Color.Black;
+            label29.Location = new Point(650, 259);
+            label29.Name = "label29";
+            label29.Size = new Size(50, 20);
+            label29.TabIndex = 10;
+            label29.Text = "Adres:";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.ForeColor = Color.Black;
+            label28.Location = new Point(650, 191);
+            label28.Name = "label28";
+            label28.Size = new Size(101, 20);
+            label28.TabIndex = 9;
+            label28.Text = "Doğum Tarihi:";
+            // 
+            // hastaKayit_dogum_tarih
+            // 
+            hastaKayit_dogum_tarih.Location = new Point(650, 214);
+            hastaKayit_dogum_tarih.Name = "hastaKayit_dogum_tarih";
+            hastaKayit_dogum_tarih.Size = new Size(250, 27);
+            hastaKayit_dogum_tarih.TabIndex = 8;
+            hastaKayit_dogum_tarih.ValueChanged += hastaKayit_dogum_tarih_ValueChanged;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.ForeColor = Color.Black;
+            label27.Location = new Point(353, 413);
+            label27.Name = "label27";
+            label27.Size = new Size(63, 20);
+            label27.TabIndex = 7;
+            label27.Text = "Cinsiyet:";
+            // 
+            // hastaKayit_cinsiyet_box
+            // 
+            hastaKayit_cinsiyet_box.FormattingEnabled = true;
+            hastaKayit_cinsiyet_box.Items.AddRange(new object[] { "Kadın", "Erkek" });
+            hastaKayit_cinsiyet_box.Location = new Point(355, 439);
+            hastaKayit_cinsiyet_box.Name = "hastaKayit_cinsiyet_box";
+            hastaKayit_cinsiyet_box.Size = new Size(250, 28);
+            hastaKayit_cinsiyet_box.TabIndex = 6;
+            hastaKayit_cinsiyet_box.SelectedIndexChanged += hastaKayit_cinsiyet_box_SelectedIndexChanged;
+            // 
+            // hastaKayit_soyad_box
+            // 
+            hastaKayit_soyad_box.Location = new Point(355, 359);
+            hastaKayit_soyad_box.Name = "hastaKayit_soyad_box";
+            hastaKayit_soyad_box.Size = new Size(250, 27);
+            hastaKayit_soyad_box.TabIndex = 5;
+            hastaKayit_soyad_box.TextChanged += hastaKayit_soyad_box_TextChanged;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.ForeColor = Color.Black;
+            label26.Location = new Point(354, 336);
+            label26.Name = "label26";
+            label26.Size = new Size(53, 20);
+            label26.TabIndex = 4;
+            label26.Text = "Soyad:";
+            // 
+            // hastaKayit_ad_box
+            // 
+            hastaKayit_ad_box.Location = new Point(355, 290);
+            hastaKayit_ad_box.Name = "hastaKayit_ad_box";
+            hastaKayit_ad_box.Size = new Size(250, 27);
+            hastaKayit_ad_box.TabIndex = 3;
+            hastaKayit_ad_box.TextChanged += hastaKayit_ad_box_TextChanged;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.ForeColor = Color.Black;
+            label25.Location = new Point(354, 267);
+            label25.Name = "label25";
+            label25.Size = new Size(31, 20);
+            label25.TabIndex = 2;
+            label25.Text = "Ad:";
+            // 
+            // hastaKayit_tc_box
+            // 
+            hastaKayit_tc_box.Location = new Point(355, 214);
+            hastaKayit_tc_box.Name = "hastaKayit_tc_box";
+            hastaKayit_tc_box.Size = new Size(250, 27);
+            hastaKayit_tc_box.TabIndex = 1;
+            hastaKayit_tc_box.TextChanged += hastaKayit_tc_box_TextChanged;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.ForeColor = Color.Black;
+            label24.Location = new Point(354, 191);
+            label24.Name = "label24";
+            label24.Size = new Size(52, 20);
+            label24.TabIndex = 0;
+            label24.Text = "TC No:";
+            // 
             // Form1
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
             ClientSize = new Size(1506, 730);
             Controls.Add(sideBar);
+            Controls.Add(hastaKayitEkran);
             Controls.Add(fullHastaBilgiEkran);
             Controls.Add(hasta_arama_ekran);
-            Controls.Add(hastaKayitEkran);
+            Controls.Add(yeniHastaKayıtEkran);
             Name = "Form1";
             Text = "Form1";
+            sideBar.ResumeLayout(false);
+            menu_yeniHasta_panel.ResumeLayout(false);
+            menu_yeniHasta_panel.PerformLayout();
+            menu_personelSorgu_panel.ResumeLayout(false);
+            menu_personelSorgu_panel.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            menu_doktorSorgu_panel.ResumeLayout(false);
+            menu_doktorSorgu_panel.PerformLayout();
+            menu_hastaArama_panel.ResumeLayout(false);
+            menu_hastaArama_panel.PerformLayout();
+            menu_anaEkran_panel.ResumeLayout(false);
+            menu_anaEkran_panel.PerformLayout();
             hastaKayitEkran.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
@@ -738,6 +1065,8 @@
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)hasta_arama_gridV).EndInit();
+            yeniHastaKayıtEkran.ResumeLayout(false);
+            yeniHastaKayıtEkran.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -801,5 +1130,32 @@
         private Label label7;
         private Button button4;
         private Button button5;
+        private Panel menu_anaEkran_panel;
+        private Panel menu_hastaArama_panel;
+        private Label label19;
+        private Label label18;
+        private Panel menu_doktorSorgu_panel;
+        private Label label20;
+        private Panel menu_yeniHasta_panel;
+        private Label label23;
+        private Panel menu_personelSorgu_panel;
+        private Label label22;
+        private Panel panel4;
+        private Label menu_poliklinikSorgu_panel;
+        private Panel yeniHastaKayıtEkran;
+        private TextBox hastaKayit_tc_box;
+        private Label label24;
+        private ComboBox hastaKayit_cinsiyet_box;
+        private TextBox hastaKayit_soyad_box;
+        private Label label26;
+        private TextBox hastaKayit_ad_box;
+        private Label label25;
+        private TextBox hastaKayit_adres_box;
+        private Label label29;
+        private Label label28;
+        private DateTimePicker hastaKayit_dogum_tarih;
+        private Label label27;
+        private Button hastaKayit_kaydet_button;
+        private Label label30;
     }
 }

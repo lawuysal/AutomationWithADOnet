@@ -414,7 +414,7 @@ namespace adonettest
             string convertedSearchTerm = App.SorguDonustur(aramaMetni);
 
 
-            string sorgu = $"select ad + ' ' + soyad HastaAd, dogum_tarihi DogumTarihi, dosya_no TC\r\n" +
+            string sorgu = $"select ad + ' ' + soyad HastaAd, CAST(dogum_tarihi as DATE) DogumTarihi, dosya_no TC\r\n" +
                 $"from hasta \r\n" +
                 $"where REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(UPPER(AD + soyad), 'Ý', 'I'), 'Þ', 'S'), 'Ð', 'G'), 'Ü', 'U'), 'Ç', 'C'), 'Ö', 'O') \r\n" +
                 $"like '{convertedSearchTerm}%'";
@@ -451,6 +451,198 @@ namespace adonettest
 
             var keyEventArgs = new KeyEventArgs(Keys.Enter);
             dosya_no_tBox_KeyDown(dosya_no_tBox, keyEventArgs);
+        }
+
+        private void menu_anaEkran_panel_Click(object sender, EventArgs e)
+        {
+            hastaKayitEkran.BringToFront();
+            menu_anaEkran_panel.BackColor = Color.MediumAquamarine;
+            menu_hastaArama_panel.BackColor = Color.SeaGreen;
+            menu_yeniHasta_panel.BackColor = Color.SeaGreen;
+            menu_doktorSorgu_panel.BackColor = Color.SeaGreen;
+            menu_poliklinikSorgu_panel.BackColor = Color.SeaGreen;
+            menu_personelSorgu_panel.BackColor = Color.SeaGreen;
+        }
+
+        private void hastaKayit_tc_box_TextChanged(object sender, EventArgs e)
+        {
+            if (
+                hastaKayit_tc_box.Text != "" &&
+                hastaKayit_ad_box.Text != "" &&
+                hastaKayit_soyad_box.Text != "" &&
+                hastaKayit_cinsiyet_box.Text != ""
+                                                                                                          )
+            {
+                hastaKayit_kaydet_button.Enabled = true;
+            }
+            else
+            {
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+        }
+
+        private void hastaKayit_ad_box_TextChanged(object sender, EventArgs e)
+        {
+            if (
+                hastaKayit_tc_box.Text != "" &&
+                hastaKayit_ad_box.Text != "" &&
+                hastaKayit_soyad_box.Text != "" &&
+                hastaKayit_cinsiyet_box.Text != ""
+                                                                                                          )
+            {
+                hastaKayit_kaydet_button.Enabled = true;
+            }
+            else
+            {
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+        }
+
+        private void hastaKayit_soyad_box_TextChanged(object sender, EventArgs e)
+        {
+            if (
+                hastaKayit_tc_box.Text != "" &&
+                hastaKayit_ad_box.Text != "" &&
+                hastaKayit_soyad_box.Text != "" &&
+                hastaKayit_cinsiyet_box.Text != ""
+                                                                                                          )
+            {
+                hastaKayit_kaydet_button.Enabled = true;
+            }
+            else
+            {
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+        }
+
+        private void hastaKayit_cinsiyet_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (
+                hastaKayit_tc_box.Text != "" &&
+                hastaKayit_ad_box.Text != "" &&
+                hastaKayit_soyad_box.Text != "" &&
+                hastaKayit_cinsiyet_box.Text != ""
+                                                                                                          )
+            {
+                hastaKayit_kaydet_button.Enabled = true;
+            }
+            else
+            {
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+        }
+
+        private void hastaKayit_dogum_tarih_ValueChanged(object sender, EventArgs e)
+        {
+            if (
+                hastaKayit_tc_box.Text != "" &&
+                hastaKayit_ad_box.Text != "" &&
+                hastaKayit_soyad_box.Text != "" &&
+                hastaKayit_cinsiyet_box.Text != ""
+                                                                                                          )
+            {
+                hastaKayit_kaydet_button.Enabled = true;
+            }
+            else
+            {
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+        }
+
+        private void hastaKayit_adres_box_TextChanged(object sender, EventArgs e)
+        {
+            if (
+                hastaKayit_tc_box.Text != "" &&
+                hastaKayit_ad_box.Text != "" &&
+                hastaKayit_soyad_box.Text != "" &&
+                hastaKayit_cinsiyet_box.Text != ""
+                                                                                                          )
+            {
+                hastaKayit_kaydet_button.Enabled = true;
+            }
+            else
+            {
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+        }
+
+        private void hastaKayit_kaydet_button_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("INSERT INTO hasta (dosya_no, ad, soyad, dogum_tarihi, cinsiyet, adres, sevk_tarihi, taburcu_tarihi, taburcu_durumu) " +
+                               "VALUES (@DosyaNo, @Ad, @Soyad, @DogumTarihi, @Cinsiyet, @Adres, @SevkTarihi, @TaburcuTarihi, @TaburcuDurumu)", con);
+
+            cmd.Parameters.AddWithValue("@DosyaNo", hastaKayit_tc_box.Text);
+            cmd.Parameters.AddWithValue("@Ad", hastaKayit_ad_box.Text);
+            cmd.Parameters.AddWithValue("@Soyad", hastaKayit_soyad_box.Text);
+            cmd.Parameters.AddWithValue("@DogumTarihi", hastaKayit_dogum_tarih.Value);
+            cmd.Parameters.AddWithValue("@Cinsiyet", hastaKayit_cinsiyet_box.Text == "Erkek" ? true : false);
+            cmd.Parameters.AddWithValue("@Adres", hastaKayit_adres_box.Text);
+            cmd.Parameters.AddWithValue("@SevkTarihi", DateTime.Now);
+            cmd.Parameters.AddWithValue("@TaburcuTarihi", DBNull.Value);
+            cmd.Parameters.AddWithValue("@TaburcuDurumu", false);
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+
+                hastaKayit_ad_box.Text = "";
+                hastaKayit_soyad_box.Text = "";
+                hastaKayit_dogum_tarih.Value = DateTime.Now;
+                hastaKayit_cinsiyet_box.Text = "";
+                hastaKayit_adres_box.Text = "";
+
+                MessageBox.Show("Kayýt baþarýlý þekilde eklendi.");
+                hastaKayit_kaydet_button.Enabled = false;
+                dosya_no_tBox.Text = hastaKayit_tc_box.Text;
+                var keyEventArgs = new KeyEventArgs(Keys.Enter);
+                dosya_no_tBox_KeyDown(dosya_no_tBox, keyEventArgs);
+
+                hastaKayitEkran.BringToFront();
+                menu_anaEkran_panel.BackColor = Color.MediumAquamarine;
+                menu_hastaArama_panel.BackColor = Color.SeaGreen;
+                menu_yeniHasta_panel.BackColor = Color.SeaGreen;
+                menu_doktorSorgu_panel.BackColor = Color.SeaGreen;
+                menu_poliklinikSorgu_panel.BackColor = Color.SeaGreen;
+                menu_personelSorgu_panel.BackColor = Color.SeaGreen;
+                hastaKayit_tc_box.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "Hataaa oldu dayýoðlu!!!!");
+                hastaKayit_tc_box.Text = "";
+                hastaKayit_ad_box.Text = "";
+                hastaKayit_soyad_box.Text = "";
+                hastaKayit_dogum_tarih.Value = DateTime.Now;
+                hastaKayit_cinsiyet_box.Text = "";
+                hastaKayit_adres_box.Text = "";
+                hastaKayit_kaydet_button.Enabled = false;
+            }
+
+        }
+
+        private void panel6_Click(object sender, EventArgs e)
+        {
+            yeniHastaKayýtEkran.BringToFront();
+            menu_anaEkran_panel.BackColor = Color.SeaGreen;
+            menu_hastaArama_panel.BackColor = Color.SeaGreen;
+            menu_yeniHasta_panel.BackColor = Color.MediumAquamarine;
+            menu_doktorSorgu_panel.BackColor = Color.SeaGreen;
+            menu_poliklinikSorgu_panel.BackColor = Color.SeaGreen;
+            menu_personelSorgu_panel.BackColor = Color.SeaGreen;
+        }
+
+        private void menu_hastaArama_panel_Click(object sender, EventArgs e)
+        {
+            hasta_arama_ekran.BringToFront();
+            menu_anaEkran_panel.BackColor = Color.SeaGreen;
+            menu_hastaArama_panel.BackColor = Color.MediumAquamarine;
+            menu_yeniHasta_panel.BackColor = Color.SeaGreen;
+            menu_doktorSorgu_panel.BackColor = Color.SeaGreen;
+            menu_poliklinikSorgu_panel.BackColor = Color.SeaGreen;
+            menu_personelSorgu_panel.BackColor = Color.SeaGreen;
         }
     }
 }
