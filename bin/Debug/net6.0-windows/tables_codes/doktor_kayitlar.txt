@@ -1,0 +1,22 @@
+INSERT INTO doktor (doktor_id, doktor_adi, doktor_soyadi, bolum_id)
+VALUES
+    (1, 'Ahmet', 'Yılmaz', 1),
+    (2, 'Ayşe', 'Demir', 2),
+    (3, 'Mehmet', 'Kaya', 3),
+    (4, 'Fatma', 'Arslan', 4),
+    (5, 'Ali', 'Çelik', 5),
+    (6, 'Zeynep', 'Koç', 6),
+    (7, 'Hakan', 'Bulut', 7),
+    (8, 'Seda', 'Güler', 8),
+    (9, 'Emre', 'Yıldız', 9),
+    (10, 'Sevil', 'Sönmez', 10),
+    (11, 'Deniz', 'Kurt', 1),
+    (12, 'Ebru', 'Aksoy', 2),
+    (13, 'Can', 'Özdemir', 3),
+    (14, 'Gizem', 'Toprak', 4),
+    (15, 'Tolga', 'Çelik', 5),
+    (16, 'İrem', 'Yılmaz', 6),
+    (17, 'Kaan', 'Demir', 7),
+    (18, 'Aslı', 'Güneş', 8),
+    (19, 'Berk', 'Arslan', 9),
+    (20, 'Ceren', 'Kara', 10);

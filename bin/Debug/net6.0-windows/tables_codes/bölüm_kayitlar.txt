@@ -1,0 +1,12 @@
+INSERT INTO bolum (bolum_id, ad)
+VALUES
+    (1, 'Ortopedi'),
+    (2, 'Dahiliye'),
+    (3, 'Kardiyoloji'),
+    (4, 'Diş Sağlığı'),
+    (5, 'Göz Hastalıkları'),
+    (6, 'Kulak Burun Boğaz'),
+    (7, 'Nöroloji'),
+    (8, 'Cerrahi'),
+    (9, 'Radyoloji'),
+    (10, 'Psikiyatri');

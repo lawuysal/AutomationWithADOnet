@@ -1,0 +1,12 @@
+INSERT INTO islemler (islem_id, islem_isim, fiyat)
+VALUES
+    (1, 'Muayene', 100),
+    (2, 'Kan Tahlili', 150),
+    (3, 'Ameliyat', 500),
+    (4, 'Röntgen', 200),
+    (5, 'Ultrason', 250),
+    (6, 'EKG', 120),
+    (7, 'MR', 350),
+    (8, 'Endoskopi', 400),
+    (9, 'Tomografi', 450),
+    (10, 'Laboratuvar Testi', 180);

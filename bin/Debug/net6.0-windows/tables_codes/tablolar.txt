@@ -1,0 +1,56 @@
+CREATE TABLE Hasta (
+    dosya_no CHAR(11) NOT NULL,
+    ad NVARCHAR(40) NOT NULL,
+    soyad NVARCHAR(20) NOT NULL,
+    dogum_tarihi SMALLDATETIME NOT NULL,
+    cinsiyet BIT NOT NULL,
+    adres NTEXT,
+    sevk_tarihi SMALLDATETIME NOT NULL,
+    taburcu_tarihi SMALLDATETIME,
+    taburcu_durumu BIT NOT NULL,
+	CONSTRAINT HASTA_COMP_KEY PRIMARY KEY (dosya_no, sevk_tarihi)
+);
+
+CREATE TABLE bolum (
+    bolum_id TINYINT PRIMARY KEY,
+    ad NVARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE doktor (
+    doktor_id SMALLINT PRIMARY KEY,
+    doktor_adi NVARCHAR(40) NOT NULL,
+    doktor_soyadi NVARCHAR(20) NOT NULL,
+    bolum_id TINYINT NOT NULL,
+    FOREIGN KEY (bolum_id) REFERENCES bolum(bolum_id)
+);
+
+CREATE TABLE poliklinik (
+    poliklinik_id TINYINT PRIMARY KEY,
+    poliklinik_isim NVARCHAR(20) NOT NULL UNIQUE,
+    doktor_id SMALLINT,
+    FOREIGN KEY (doktor_id) REFERENCES doktor(doktor_id)
+);
+
+CREATE TABLE islemler (
+    islem_id TINYINT PRIMARY KEY,
+    islem_isim NVARCHAR(20) NOT NULL UNIQUE,
+    fiyat MONEY NOT NULL
+);
+
+CREATE TABLE kayitlar (
+    kayit_id INT IDENTITY(1,1) PRIMARY KEY,
+    hasta_id CHAR(11),
+    doktor_id SMALLINT,
+    poliklinik_id TINYINT,
+    islem_id TINYINT,
+    sevk_tarihi SMALLDATETIME,
+    kayit_tarihi SMALLDATETIME NOT NULL,
+    sira_no TINYINT NOT NULL,
+    
+    FOREIGN KEY (doktor_id) REFERENCES doktor(doktor_id),
+    FOREIGN KEY (poliklinik_id) REFERENCES poliklinik(poliklinik_id),
+    FOREIGN KEY (islem_id) REFERENCES islemler(islem_id),
+    CONSTRAINT fk_hasta_comp
+    FOREIGN KEY (hasta_id, sevk_tarihi)  
+	REFERENCES Hasta (dosya_no, sevk_tarihi)
+);

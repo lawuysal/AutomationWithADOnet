@@ -1,0 +1,56 @@
+-- bütün kayitlari seçer
+select pol.poliklinik_isim Poliklinik, dok.doktor_adi + ' ' + dok.doktor_soyadi Doktor,
+isl.islem_isim İşlem, kay.sira_no SıraNo, CAST(kay.kayit_tarihi AS DATE) Tarih,
+isl.fiyat Ücret
+from kayitlar as kay 
+join poliklinik as pol on kay.poliklinik_id = pol.poliklinik_id
+join doktor as dok on kay.doktor_id = dok.doktor_id
+join islemler as isl on kay.islem_id = isl.islem_id
+
+-- belli dosya no nun kayitlarini alir.
+select distinct pol.poliklinik_isim Poliklinik, dok.doktor_adi + ' ' + dok.doktor_soyadi Doktor,
+isl.islem_isim İşlem, kay.sira_no SıraNo, CAST(kay.kayit_tarihi AS DATE) Tarih,
+isl.fiyat Ücret
+from kayitlar as kay 
+join hasta as has on kay.hasta_id =  '78901234567'
+join poliklinik as pol on kay.poliklinik_id = pol.poliklinik_id
+join doktor as dok on kay.doktor_id = dok.doktor_id
+join islemler as isl on kay.islem_id = isl.islem_id
+
+-- adonet kodu
+ SqlCommand cmd = new SqlCommand($"" +
+     $"select distinct pol.poliklinik_isim Poliklinik, dok.doktor_adi + ' ' + dok.doktor_soyadi Doktor,\r\n" +
+     $"isl.islem_isim İşlem, kay.sira_no SıraNo, CAST(kay.kayit_tarihi AS DATE) Tarih,\r\n" +
+     $"isl.fiyat Ücret\r\n" +
+     $"from kayitlar as kay \r\n" +
+     $"join hasta as has on kay.hasta_id =  '{App.seciliDosyaNo}'\r\n" +
+     $"join poliklinik as pol on kay.poliklinik_id = pol.poliklinik_id\r\n" +
+     $"join doktor as dok on kay.doktor_id = dok.doktor_id\r\n" +
+     $"join islemler as isl on kay.islem_id = isl.islem_id", con);
+ con.Open();
+ SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+ DataTable dataTable = new DataTable();
+ sqlDataAdapter.Fill(dataTable);
+ dataGridView1.DataSource = dataTable;
+ con.Close();
+
+-- bu sorgu hastanın kayit sorgu ekranındaki bilgilerini getirir.
+select ad Ad, soyad Soyad, CAST(sevk_tarihi as DATE) Sevk from Hasta where dosya_no = '78901234567'
+
+-- adonet kodu
+SqlCommand hastaBilgiCmd = new SqlCommand($"select ad Ad, soyad Soyad, CAST(sevk_tarihi as DATE) Sevk from Hasta " +
+    $"where dosya_no = '{App.seciliDosyaNo}';", con);
+
+con.Open();
+SqlDataReader result = hastaBilgiCmd.ExecuteReader();
+
+
+if (result.Read())
+{
+    kayitlar_hasta_adi_tBox.Text = result["Ad"].ToString();
+    kayitlar_hasta_soyadi_tBox.Text = result["Soyad"].ToString();
+    sevk_tarihi_dateP.Value = Convert.ToDateTime(result["Sevk"].ToString());
+    con.Close();
+}
+
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(UPPER(AD + ' ' + soyad), 'İ', 'I'), 'Ş', 'S'), 'Ğ', 'G'), 'Ü', 'U'), 'Ç', 'C'), 'Ö', 'O')

@@ -1,0 +1,12 @@
+INSERT INTO poliklinik (poliklinik_id, poliklinik_isim, doktor_id)
+VALUES
+    (1, 'Ortopedi - 1', 1),
+    (2, 'Ortopedi - 2', 11),
+    (3, 'Dahiliye - 1', 2),
+    (4, 'Dahiliye - 2', 12),
+    (5, 'Kardiyoloji - 1', 3),
+    (6, 'Kardiyoloji - 2', 13),
+    (7, 'Diş Sağlığı - 1', 4),
+    (8, 'Diş Sağlığı - 2', 14),
+    (9, 'Göz Hastalıkları - 1', 5),
+    (10, 'Göz Hastalıkları - 2', 15);
